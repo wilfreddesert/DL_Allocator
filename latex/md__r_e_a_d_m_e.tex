@@ -1,0 +1,85 @@
+Аллокатор памяти, позволяющий выделять память заданного размера по принципу first-\/fit, управлять выделенной памятью и производить простейшую оптимизацию.
+
+\doxysection*{Начало работы}
+
+\doxysubsection*{Требования}
+
+С++11
+
+\doxysubsection*{Использование}
+
+\doxysubsubsection*{Подключить заголовочный файл\+:}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#include "allocator.h"}
+\end{DoxyCode}
+ \doxysubsubsection*{Создать экземпляр класса \mbox{\hyperlink{class_allocator}{Allocator}}\+:}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Allocator allocator = Allocator(size);}
+\end{DoxyCode}
+ где size — целочисленная переменная, определеяющая общий размер памяти, с которой будет работать аллокатор.
+
+\doxysubsubsection*{Можно также использовать конструктор по умолчанию\+:}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Allocator allocator = Allocator();}
+\end{DoxyCode}
+ В этом случае будет выделено 100 байтов.
+
+Для выделения заданного объема памяти из общего количества необходимо вызвать метод класса \mbox{\hyperlink{class_allocator}{Allocator}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CleverPtr alloc(size\_t size);}
+\end{DoxyCode}
+ Данный метод вернет объект \mbox{\hyperlink{class_clever_ptr}{Clever\+Ptr}} со ссылкой на выделенную память.
+
+Для удаления объекта из памяти необходимо использовать метод класса \mbox{\hyperlink{class_allocator}{Allocator}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{void free(CleverPtr\&);}
+\end{DoxyCode}
+ В качестве аргумента нужно передать ссылку на удаляемый объект \mbox{\hyperlink{class_clever_ptr}{Clever\+Ptr}}
+
+Для того, чтобы решить проблему фрагментации памяти, используется метод\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{void defrag();}
+\end{DoxyCode}
+
+
+\doxysection*{Запуск тестов}
+
+Для запуска тестов достаточно\+:
+
+\doxysubsubsection*{Подключить файл}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#include "tests.h" }
+\end{DoxyCode}
+ \doxysubsubsection*{Создать экземпляр класса Test}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Tests tests = Tests();}
+\end{DoxyCode}
+ \doxysubsubsection*{Вызвать метод run\+:}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{tests.run();}
+\end{DoxyCode}
+
+
+\doxysection*{Авторы}
+
+\doxysubsection*{Рахматова Валерия}
+
+\doxysubsection*{Шарапов Тимур}
+
+\doxysubsubsection*{Особая благодарность Эльфу-\/торговцу}
+
+\doxyparagraph*{С наступающим 2020 годом!}

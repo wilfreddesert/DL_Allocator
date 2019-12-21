@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="allocatorLT" targetName="allocatorLT" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="72129f88-7844-4069-8bcf-bb2d2959dee0" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
+  <component name="ProjectId" id="1RQK8rgkLt24mjYNYHN9DHgvwkM" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="language.cpp" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="allocatorLT" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="allocatorLT" TARGET_NAME="allocatorLT" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="allocatorLT" RUN_TARGET_NAME="allocatorLT">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="72129f88-7844-4069-8bcf-bb2d2959dee0" name="Default Changelist" comment="" />
+      <created>1569593723573</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1569593723573</updated>
+      <workItem from="1569593725587" duration="840000" />
+      <workItem from="1569681872308" duration="114000" />
+      <workItem from="1572032677629" duration="128000" />
+      <workItem from="1572710520087" duration="596000" />
+      <workItem from="1573021617504" duration="705000" />
+      <workItem from="1573759554520" duration="263000" />
+      <workItem from="1574018278526" duration="1176000" />
+      <workItem from="1574177760653" duration="17457000" />
+      <workItem from="1574427238752" duration="170000" />
+      <workItem from="1574499236880" duration="4910000" />
+      <workItem from="1574796992995" duration="389000" />
+      <workItem from="1575399390418" duration="4531000" />
+      <workItem from="1575573347078" duration="1269000" />
+      <workItem from="1575574622275" duration="112000" />
+      <workItem from="1575574737542" duration="2948000" />
+      <workItem from="1575578167151" duration="25000" />
+      <workItem from="1575612317076" duration="3650000" />
+      <workItem from="1575946115607" duration="22535000" />
+      <workItem from="1576316683963" duration="3853000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
