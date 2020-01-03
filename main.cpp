@@ -4,6 +4,6 @@
 int main() {
     Tests tests = Tests();
     tests.run();
-
+	system("pause");
     return 0;
 }
