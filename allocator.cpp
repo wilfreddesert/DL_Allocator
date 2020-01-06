@@ -10,6 +10,10 @@ Allocator::Allocator() {
     Allocator(100);//100 Bytes
 }
 
+Allocator::~Allocator() {
+	std::free(this->memory);
+}
+
 Allocator::Allocator(int size) {
     this->memory = (void*)malloc(size + MEMORY_DELIMETR + (size + MEMORY_DELIMETR)*sizeof(dl_list));
     this->list_memory = (void*)((uintptr_t)this->memory + (size + MEMORY_DELIMETR));
