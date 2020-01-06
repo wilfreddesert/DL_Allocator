@@ -6,8 +6,8 @@ This is a simple memory allocator used to allocate memory of a specified size fo
 
 ### Requirements
 
-#### С++11 or higher
-#### cmake 3.11 or higher
+* С++11 or higher
+* cmake 3.11 or higher
 
 ### Usage
 
