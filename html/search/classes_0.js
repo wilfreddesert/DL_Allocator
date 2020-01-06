@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['allocator_11',['Allocator',['../class_allocator.html',1,'']]]
+  ['allocator',['Allocator',['../class_allocator.html',1,'']]]
 ];

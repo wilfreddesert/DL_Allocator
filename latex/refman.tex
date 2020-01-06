@@ -1,13 +1,5 @@
 \let\mypdfximage\pdfximage\def\pdfximage{\immediate\mypdfximage}\documentclass[twoside]{book}
 
-%% moved from doxygen.sty due to workaround for LaTex 2019 version and unmaintained tabu package
-\usepackage{ifthen}
-\ifx\requestedLaTeXdate\undefined
-\usepackage{array}
-\else
-\usepackage{array}[=2016-10-06]
-\fi
-%%
 % Packages required by doxygen
 \usepackage{fixltx2e}
 \usepackage{calc}
@@ -160,7 +152,7 @@
 \begin{center}%
 {\Large A\+L\+L\+O\+C\+A\+T\+OR }\\
 \vspace*{1cm}
-{\large Создано системой Doxygen 1.8.16}\\
+{\large Создано системой Doxygen 1.8.15}\\
 \end{center}
 \end{titlepage}
 \clearemptydoublepage

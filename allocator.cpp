@@ -1,7 +1,6 @@
 #include <iostream>
 #include "allocator.h"
 
-static LIST_INIT(head);
 
 void* CleverPtr::get() const {
     return data;
@@ -12,15 +11,20 @@ Allocator::Allocator() {
 }
 
 Allocator::Allocator(int size) {
-    this->memory = (char*)malloc(size);
-    head.block = this->memory;
-    head.size = size;
+    this->memory = (void*)malloc(size + MEMORY_DELIMETR + (size + MEMORY_DELIMETR)*sizeof(dl_list));
+    this->list_memory = (void*)((uintptr_t)this->memory + (size + MEMORY_DELIMETR));
+    this->list_memory_flag = this->list_memory;
+    head = (dl_list*)list_alloc();
+    head->block = this->memory;
+    head->size = size;
+    head->state = FREE;
+    head->next = nullptr;
+    head->prev = nullptr;
 }
 
 CleverPtr Allocator::alloc(int size) {
-    dl_list *ptr = &(head);
+    dl_list *ptr = head;
     bool find = false;
-
     while (ptr) {
         if (ptr->state == FREE && ptr->size >= size) {
             find = true;
@@ -28,58 +32,79 @@ CleverPtr Allocator::alloc(int size) {
         }
         ptr = ptr->next;
     }
-
     if (find) {
-        dl_list *new_block = new dl_list(size, ptr->block, OCCUPIED);
-
+        void * list_mem = list_alloc();
+        dl_list *new_block = init_list_node(list_mem, ptr->block, size, OCCUPIED);
         ptr->block = (char*)((uintptr_t)(ptr->block) + size);
         ptr->size -= size;
-
-        add_to_list(&(head), new_block);
-
+        if (!ptr->prev) {
+            head = new_block;
+        }
+        add_to_list(ptr, new_block);
         return CleverPtr{new_block->block};
     }
-
     return CleverPtr(nullptr);
 }
 
+void* Allocator::list_alloc() {
+    void* ptr = this->list_memory_flag;
+    this->list_memory_flag = (void*)((uintptr_t)this->list_memory_flag + sizeof(dl_list) + MEMORY_DELIMETR);
+    return (ptr);
+}
+
 void Allocator::free(CleverPtr &ptr) {
-    char* block1 = (char *)ptr.get();
-    dl_list* ptr1 = &(head);
-
-    while(ptr1->next){
-        if (ptr1->block == block1)
+    void* block = ptr.get();
+    dl_list* cont = head;
+    while(cont->next){
+        if (cont->block == block)
             break;
-
-        ptr1 = ptr1->next;
+        cont = cont->next;
     }
-
-    ptr1->state = FREE;
+    cont->state = FREE;
+    if (cont->prev && cont->prev->state == FREE)
+        union_list_node(cont->prev, cont);
+    if (cont->next && cont->next->state == FREE)
+        union_list_node(cont, cont->next);
 }
 
 void Allocator::defrag() {
-    dl_list *ptr = &(head);
+    dl_list* tail = head;
+    while (tail->next) tail = tail->next;
 
-    while(ptr) {
-        if (ptr->next) {
-            if (ptr->state == FREE && ptr->next->state == FREE) {
-                ptr->size += ptr->next->size;
-                remove_from_list(ptr->next);
+    dl_list * ptr = tail;
+    while (ptr){
+        if (ptr->state == FREE){
+            if (ptr->prev) {
+                if (ptr->prev->state == OCCUPIED) {
+                    dl_list *prev_elem = ptr->prev;
+                    void *source = prev_elem->block;
+                    void *destination = (void *) ((uintptr_t) ptr->block + (ptr->size - prev_elem->size));
+                    memmove(destination, source, prev_elem->size);
+
+                    int prev_elem_size = prev_elem->size;
+                    prev_elem->size = ptr->size;
+                    prev_elem->state = FREE;
+
+                    ptr->block = destination;
+                    ptr->state = OCCUPIED;
+                    ptr->size = prev_elem_size;
+                }
+                else{
+                    union_list_node(ptr->prev, ptr);
+                }
             }
         }
-        ptr = ptr->next;
+
+        ptr = ptr->prev;
     }
 }
 
-int Allocator::show_blocks(vector<pair<int, int>> *blocks, STATES state) {
+int Allocator::show_blocks(vector<int> *blocks, STATES state) {
     int busy_blocks_cnt = 0;
-
-    dl_list *ptr = &(head);
-
+    dl_list *ptr = head;
     while(ptr) {
         if (ptr->state == state) {
-            pair<int, int> p = {head.block - ptr->block, ptr->size};
-            blocks->emplace_back(p);
+            blocks->emplace_back(ptr->size);
             busy_blocks_cnt++;
         }
         ptr = ptr->next;

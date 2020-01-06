@@ -1,4 +1,4 @@
-\hypertarget{class_allocator}{}\doxysection{Класс Allocator}
+\hypertarget{class_allocator}{}\section{Класс Allocator}
 \label{class_allocator}\index{Allocator@{Allocator}}
 
 
@@ -9,7 +9,7 @@
 
 {\ttfamily \#include $<$allocator.\+h$>$}
 
-\doxysubsection*{Открытые члены}
+\subsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_allocator_acd81cd6a9337a081c558f89661b623d7}{Allocator}} ()
@@ -26,22 +26,22 @@ void \mbox{\hyperlink{class_allocator_ae5eaf0539035654ca8e5abc6586326f3}{defrag}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Подробное описание}
+\subsection{Подробное описание}
 Основной класс аллокатора 
 
 Данный класс содержит методы для выделения и очищения памяти 
 
-\doxysubsection{Конструктор(ы)}
+\subsection{Конструктор(ы)}
 \mbox{\Hypertarget{class_allocator_acd81cd6a9337a081c558f89661b623d7}\label{class_allocator_acd81cd6a9337a081c558f89661b623d7}} 
 \index{Allocator@{Allocator}!Allocator@{Allocator}}
 \index{Allocator@{Allocator}!Allocator@{Allocator}}
-\doxysubsubsection{\texorpdfstring{Allocator()}{Allocator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\subsubsection{\texorpdfstring{Allocator()}{Allocator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Allocator\+::\+Allocator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Конструктор по умолчанию, создает резерв памяти размером 100 байт \mbox{\Hypertarget{class_allocator_af37df7ff59070823ef0e9796bea63518}\label{class_allocator_af37df7ff59070823ef0e9796bea63518}} 
 \index{Allocator@{Allocator}!Allocator@{Allocator}}
 \index{Allocator@{Allocator}!Allocator@{Allocator}}
-\doxysubsubsection{\texorpdfstring{Allocator()}{Allocator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\subsubsection{\texorpdfstring{Allocator()}{Allocator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Allocator\+::\+Allocator (\begin{DoxyParamCaption}\item[{int}]{size }\end{DoxyParamCaption})}
 
 Конструктор, с одним параметром 
@@ -51,14 +51,14 @@ void \mbox{\hyperlink{class_allocator_ae5eaf0539035654ca8e5abc6586326f3}{defrag}
 \end{DoxyParams}
 
 
-\doxysubsection{Методы}
+\subsection{Методы}
 \mbox{\Hypertarget{class_allocator_afaa7d76d46c8393ccf5a9fb0ba8d0c2f}\label{class_allocator_afaa7d76d46c8393ccf5a9fb0ba8d0c2f}} 
 \index{Allocator@{Allocator}!alloc@{alloc}}
 \index{alloc@{alloc}!Allocator@{Allocator}}
-\doxysubsubsection{\texorpdfstring{alloc()}{alloc()}}
+\subsubsection{\texorpdfstring{alloc()}{alloc()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_clever_ptr}{Clever\+Ptr}} Allocator\+::alloc (\begin{DoxyParamCaption}\item[{int}]{size }\end{DoxyParamCaption})}
 
-Метод, выделяющий память необходимого рамера 
+Метод выделяющий память необходимого рамера 
 \begin{DoxyParams}[1]{Аргументы}
 \mbox{\texttt{ in}}  & {\em size} & Размер выделяемой памяти \\
 \hline
@@ -68,24 +68,24 @@ void \mbox{\hyperlink{class_allocator_ae5eaf0539035654ca8e5abc6586326f3}{defrag}
 \mbox{\Hypertarget{class_allocator_ae5eaf0539035654ca8e5abc6586326f3}\label{class_allocator_ae5eaf0539035654ca8e5abc6586326f3}} 
 \index{Allocator@{Allocator}!defrag@{defrag}}
 \index{defrag@{defrag}!Allocator@{Allocator}}
-\doxysubsubsection{\texorpdfstring{defrag()}{defrag()}}
+\subsubsection{\texorpdfstring{defrag()}{defrag()}}
 {\footnotesize\ttfamily void Allocator\+::defrag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Метод, объединяющий свободные соседние блоки памяти, для получения одного блока большего размера \mbox{\Hypertarget{class_allocator_a847a42083e25740ad283e2ffed2b294c}\label{class_allocator_a847a42083e25740ad283e2ffed2b294c}} 
+Метод объединяющий свободные соседние блоки памяти, для получения одного блока большего размера \mbox{\Hypertarget{class_allocator_a847a42083e25740ad283e2ffed2b294c}\label{class_allocator_a847a42083e25740ad283e2ffed2b294c}} 
 \index{Allocator@{Allocator}!free@{free}}
 \index{free@{free}!Allocator@{Allocator}}
-\doxysubsubsection{\texorpdfstring{free()}{free()}}
+\subsubsection{\texorpdfstring{free()}{free()}}
 {\footnotesize\ttfamily void Allocator\+::free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_clever_ptr}{Clever\+Ptr}} \&}]{ptr }\end{DoxyParamCaption})}
 
-Метод, очищающий занятый блок памяти 
+Метод очищающий занятый блок памяти 
 \begin{DoxyParams}[1]{Аргументы}
-\mbox{\texttt{ in}}  & {\em ссылка} & на объект \mbox{\hyperlink{class_clever_ptr}{Clever\+Ptr}}, в котором хранится память, которую необходимо очистить \\
+\mbox{\texttt{ in}}  & {\em ссылка} & на объект \mbox{\hyperlink{class_clever_ptr}{Clever\+Ptr}}, в котором хранится память, которую неоьходимо очистить \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_allocator_ad92f0001258aa05d43ab4f242807c332}\label{class_allocator_ad92f0001258aa05d43ab4f242807c332}} 
 \index{Allocator@{Allocator}!show\_blocks@{show\_blocks}}
 \index{show\_blocks@{show\_blocks}!Allocator@{Allocator}}
-\doxysubsubsection{\texorpdfstring{show\_blocks()}{show\_blocks()}}
+\subsubsection{\texorpdfstring{show\_blocks()}{show\_blocks()}}
 {\footnotesize\ttfamily int Allocator\+::show\+\_\+blocks (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ int, int $>$$>$ $\ast$}]{blocks,  }\item[{S\+T\+A\+T\+ES}]{state }\end{DoxyParamCaption})}
 
 Метод записывает в массив блоки памяти в зависимости от переданного состояния и возвращает их количество 

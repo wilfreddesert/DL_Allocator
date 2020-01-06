@@ -1,85 +1,58 @@
-Аллокатор памяти, позволяющий выделять память заданного размера по принципу first-\/fit, управлять выделенной памятью и производить простейшую оптимизацию.
+Аллокатор памяти, позволяющий выделять память заданного размера по принципу first fit, управлять выделенной памятью и оптимизировать её
 
-\doxysection*{Начало работы}
+\subsection*{Начало работы}
 
-\doxysubsection*{Требования}
+\subsubsection*{Требования}
 
 С++11
 
-\doxysubsection*{Использование}
+\subsubsection*{Использование}
 
-\doxysubsubsection*{Подключить заголовочный файл\+:}
-
-
+Необходимо подключить заголовочный файл\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\#include "allocator.h"}
 \end{DoxyCode}
- \doxysubsubsection*{Создать экземпляр класса \mbox{\hyperlink{class_allocator}{Allocator}}\+:}
-
-
+ Создать экземпляр класса \mbox{\hyperlink{class_allocator}{Allocator}}\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{Allocator allocator = Allocator(size);}
 \end{DoxyCode}
- где size — целочисленная переменная, определяющая общий размер памяти, с которой будет работать аллокатор.
-
-\doxysubsubsection*{Можно также использовать конструктор по умолчанию\+:}
-
-
+ где size -\/ целочисленная переменная, определеяющая общий размер памяти, которой будет оперировать аллокатор 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{Allocator allocator = Allocator();}
+\DoxyCodeLine{Так же можно использовать конструктор поумолчанию:}
 \end{DoxyCode}
- В этом случае будет выделено 100 байтов.
-
-Для выделения заданного объема памяти из общего количества необходимо вызвать метод класса \mbox{\hyperlink{class_allocator}{Allocator}}\+: 
+ \mbox{\hyperlink{class_allocator}{Allocator}} allocator = \mbox{\hyperlink{class_allocator}{Allocator()}}; 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{При этом размер всей памяти аллокатора будет равен 100 байтам}
+\end{DoxyCode}
+ Для выделения конкретного объема памяти из общей необходимо вызвать метод класса \mbox{\hyperlink{class_allocator}{Allocator}}\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{CleverPtr alloc(size\_t size);}
 \end{DoxyCode}
- Данный метод вернет объект \mbox{\hyperlink{class_clever_ptr}{Clever\+Ptr}} со ссылкой на выделенную память.
+ Этот метод вернет объект \mbox{\hyperlink{class_clever_ptr}{Clever\+Ptr}} со ссылкой на веделенную память
 
-Для удаления объекта из памяти необходимо использовать метод класса \mbox{\hyperlink{class_allocator}{Allocator}}\+:
-
-
+Для удаления объекта из памяти предназначен метод класса \mbox{\hyperlink{class_allocator}{Allocator}}\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{void free(CleverPtr\&);}
 \end{DoxyCode}
- В качестве аргумента нужно передать ссылку на удаляемый объект \mbox{\hyperlink{class_clever_ptr}{Clever\+Ptr}}
-
-Для того, чтобы решить проблему фрагментации памяти, используется метод\+: 
+ Метод принимает ссылку на удаляемый объект \mbox{\hyperlink{class_clever_ptr}{Clever\+Ptr}} 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{void defrag();}
+\DoxyCodeLine{Для избежания дефрагментации памяти используется метод:}
 \end{DoxyCode}
-
-
-\doxysection*{Запуск тестов}
-
-Для запуска тестов достаточно\+:
-
-\doxysubsubsection*{Подключить файл}
-
-
+ void defrag(); 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\#include "tests.h" }
+\DoxyCodeLine{\#\# Запуск тестов}
+\DoxyCodeLine{Для запуска тестов достаточно подключить файл}
 \end{DoxyCode}
- \doxysubsubsection*{Создать экземпляр класса Test}
-
-
+ \#include \char`\"{}tests.\+h\char`\"{} 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{Tests tests = Tests();}
+\DoxyCodeLine{Создать экземпляр класса Test}
 \end{DoxyCode}
- \doxysubsubsection*{Вызвать метод run\+:}
-
-
+ \mbox{\hyperlink{class_tests}{Tests}} tests = \mbox{\hyperlink{class_tests}{Tests()}}; 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{tests.run();}
+\DoxyCodeLine{И вызвать метод run:}
 \end{DoxyCode}
+ tests.\+run(); \`{}\`{}\`{}
 
+\subsection*{Автор}
 
-\doxysection*{Авторы}
-
-\doxysubsection*{Рахматова Валерия}
-
-\doxysubsection*{Шарапов Тимур}
-
-\doxysubsubsection*{Особая благодарность Эльфу-\/торговцу}
-
-\doxyparagraph*{С наступающим 2020 годом!}
+Рахматова Валерия 
