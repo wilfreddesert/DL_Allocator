@@ -24,10 +24,13 @@ using namespace std;
  */
 class CleverPtr {
     void* data; ///< Хранит указатель типа void на выделенную память
-
+	//Allocator *owner;
+	//int counter = 0;
 public:
     void* get() const; ///< Возвращает указатель на выделенную память
-    explicit CleverPtr(void* data): data(data){}
+	explicit CleverPtr(void* data) : data(data) {}
+    //explicit CleverPtr(void* data, int c): data(data), owner(getGlobalAllocator()) {}
+	//~CleverPtr() { if (counter == 0) owner->free(*this); }
 };
 
 /*!
@@ -44,7 +47,7 @@ class Allocator {
 
         void* list_memory_flag;
 
-        int MEMORY_DELIMETR = 2;
+        int MEMORY_DELIMITER = 2;
         void* list_alloc();
 public:
         /*!

@@ -15,8 +15,8 @@ Allocator::~Allocator() {
 }
 
 Allocator::Allocator(int size) {
-    this->memory = (void*)malloc(size + MEMORY_DELIMETR + (size + MEMORY_DELIMETR)*sizeof(dl_list));
-    this->list_memory = (void*)((uintptr_t)this->memory + (size + MEMORY_DELIMETR));
+    this->memory = (void*)malloc(size + MEMORY_DELIMITER + (size + MEMORY_DELIMITER)*sizeof(dl_list));
+    this->list_memory = (void*)((uintptr_t)this->memory + (size + MEMORY_DELIMITER));
     this->list_memory_flag = this->list_memory;
 	head = static_cast<dl_list*>(list_alloc());
     head->block = this->memory;
@@ -52,7 +52,7 @@ CleverPtr Allocator::alloc(int size) {
 
 void* Allocator::list_alloc() {
     void* ptr = this->list_memory_flag;
-    this->list_memory_flag = (void*)((uintptr_t)this->list_memory_flag + sizeof(dl_list) + MEMORY_DELIMETR);
+    this->list_memory_flag = (void*)((uintptr_t)this->list_memory_flag + sizeof(dl_list) + MEMORY_DELIMITER);
     return (ptr);
 }
 
