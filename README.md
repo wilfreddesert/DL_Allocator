@@ -1,72 +1,72 @@
-# ALLOCATOR
+# Doubly-Linked List Allocator
 
-Аллокатор памяти, позволяющий выделять память заданного размера по принципу first-fit, управлять выделенной памятью и производить простейшую оптимизацию. 
+This is a simple memory allocator used to allocate memory of a specified size following the first-fit principle, manage the allocated memory and perform simple optimization. 
 
-## Начало работы
+## Getting started
 
-### Требования
+### Requirements
 
-С++11
+С++11 or higher
+cmake 3.11 or higher
 
-### Использование
+### Usage
 
-#### Подключить заголовочный файл:
+#### Include the following header:
 ```
 #include "allocator.h"
 ```
-#### Создать экземпляр класса Allocator:
+#### Create an instance of the Allocator class:
 ```
 Allocator allocator = Allocator(size);
 ```
-где size — целочисленная переменная, определяющая общий размер памяти, с которой будет работать аллокатор. 
+where size — is an integer variable that sets the total amount of memory for the allocator.  
 
-#### Можно также использовать конструктор по умолчанию:
+#### You can also use the default constructor:
 ```
 Allocator allocator = Allocator();
 ```
-В этом случае будет выделено 100 байтов.
+In this default scenario 100 bytes will be allocated.
 
-Для выделения заданного объема памяти из общего количества необходимо вызвать метод класса Allocator:
+To allocate a specified amount of memory from the total amount, you need to call the `alloc` method of the Allocator class:
 ```
 CleverPtr alloc(size_t size);
 ```
-Данный метод вернет объект CleverPtr со ссылкой на выделенную память. 
+This method will return a CleverPtr object linking to the allocated memory. 
 
-Для удаления объекта из памяти необходимо использовать метод класса Allocator:
+To delete the object from memory, you need to use the `free` method of the Allocator class:
 
 ```
 void free(CleverPtr&);
 ```
-В качестве аргумента нужно передать ссылку на удаляемый объект CleverPtr
+You need to pass the reference to the CleverPtr object you want to delete as an argument.
 
+To solve the issue related to memory fragmentation, you can use the `defrag` method:
 
-Для того, чтобы решить проблему фрагментации памяти, используется метод:
 ```
 void defrag();
 ```
 
-## Запуск тестов
+## Running tests
 
-Для запуска тестов достаточно:
+To run the tests, you need to:
 
-#### Подключить файл
+#### Include the following header
 
 ``` 
 #include "tests.h" 
 ```
-#### Создать экземпляр класса Test
+#### Create an instance of the Test class
 
 ```
 Tests tests = Tests();
 ```
-#### Вызвать метод run:
+#### Call the `run` method:
 
 ```
 tests.run();
 ```
 
-## Авторы
-### Рахматова Валерия
-### Шарапов Тимур
-#### Особая благодарность Эльфу-торговцу
-##### С наступающим Рождеством! 
+## Authors
+### Valeria Rakhmatova
+### Timur Sharapov
+##### Merry Christmas!

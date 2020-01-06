@@ -64,7 +64,7 @@ public:
             \param[in] state состояние блоков по которому фильтруются блоки во время поиска (FREE/OCCUPIED)
             \return количество найденных блоков
         */
-        int show_blocks(vector<int> *blocks, STATES state);
+		int show_blocks(vector<pair<void*, int>>* blocks, STATES state);
 
         /*!
             Метод, выделяющий память необходимого размера

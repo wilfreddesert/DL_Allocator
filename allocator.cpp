@@ -14,7 +14,7 @@ Allocator::Allocator(int size) {
     this->memory = (void*)malloc(size + MEMORY_DELIMETR + (size + MEMORY_DELIMETR)*sizeof(dl_list));
     this->list_memory = (void*)((uintptr_t)this->memory + (size + MEMORY_DELIMETR));
     this->list_memory_flag = this->list_memory;
-    head = (dl_list*)list_alloc();
+	head = static_cast<dl_list*>(list_alloc());
     head->block = this->memory;
     head->size = size;
     head->state = FREE;
@@ -35,7 +35,7 @@ CleverPtr Allocator::alloc(int size) {
     if (find) {
         void * list_mem = list_alloc();
         dl_list *new_block = init_list_node(list_mem, ptr->block, size, OCCUPIED);
-        ptr->block = (char*)((uintptr_t)(ptr->block) + size);
+        ptr->block = (void*)((uintptr_t)(ptr->block) + size);
         ptr->size -= size;
         if (!ptr->prev) {
             head = new_block;
@@ -99,16 +99,17 @@ void Allocator::defrag() {
     }
 }
 
-int Allocator::show_blocks(vector<int> *blocks, STATES state) {
-    int busy_blocks_cnt = 0;
-    dl_list *ptr = head;
-    while(ptr) {
-        if (ptr->state == state) {
-            blocks->emplace_back(ptr->size);
-            busy_blocks_cnt++;
-        }
-        ptr = ptr->next;
-    }
+int Allocator::show_blocks(vector<pair<void*, int>>* blocks, STATES state) {
+	int blocks_cnt = 0;
+	dl_list *ptr = head;
+	while (ptr) {
+		if (ptr->state == state) {
+			pair<void*, int> p = { (ptr->block), ptr->size };
+			blocks->emplace_back(p);
+			blocks_cnt++;
+		}
+		ptr = ptr->next;
+	}
 
-    return busy_blocks_cnt;
+	return blocks_cnt;
 }
